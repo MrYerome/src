@@ -1,0 +1,10 @@
+
+<h2 class="header center">Editer </h2>
+<div *ngIf="disque">
+  <p class="center">
+    <img [src]="disque?.picture">
+  </p>
+</div>
+
+
+<app-disque-form [disque]="disque"></app-disque-form>

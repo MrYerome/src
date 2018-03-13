@@ -1,0 +1,56 @@
+<form *ngIf="disque" #disqueForm="ngForm">
+
+  <div class="row">
+    <div class="col s8 offset-s2">
+      <div class="card-panel">
+        <div class="form-group">
+          <label for="name">Nom de l'artiste</label>
+          <input type="text"
+                 id="name"
+                 class="form-control"
+                 name="name"
+                 #name1="ngModel"
+                 [(ngModel)]="disque.name"
+                 required
+                 pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\.\_\;\-\,\!\?\'\s]{1,100}$">
+
+          <div [hidden]="name1.valid || name1.pristine" class="card-panel red accent-1">Le nom est incorrect !</div>
+
+          <label for="title">Titre de l'album</label>
+          <input type="text"
+                 id="title"
+                 name="title"
+                 #title="ngModel"
+                 class="form-control"
+                 [(ngModel)]="disque.title"
+                 required>
+          <div [hidden]="title.valid || title.pristine" class="card-panel red accent-1">Le titre est incorrect !</div>
+
+          <label for="stock">Stock</label>
+          <input type="number"
+                 id="stock"
+                 name="stock"
+                 #stock="ngModel"
+                 class="form-control"
+                 [(ngModel)]="disque.stock"
+                 required
+                 step="1" min="0" max="100"
+                 pattern="^[0-9._\;\-\,\!\?\'\s]{1,3}$">
+          <div [hidden]="stock.valid || stock.pristine" class="card-panel red accent-1">Le titre est incorrect !</div>
+        </div>
+        <div class="divider"></div>
+        <div class="section center">
+          <button [disabled]="!disqueForm.valid" type="submit" class="btn waves-effect waves-light purple darken-4">Enregistrer</button>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+
+</form>
+<h3 class="center" *ngIf="!disque">Aucun disque à éditer</h3>

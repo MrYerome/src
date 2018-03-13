@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Disque } from './../Disque';
-import { DISQUES } from './../disques-data';
 import { Router } from '@angular/router';
+import { DisquesService } from '../disques.service';
 
 @Component({
   selector: 'app-list-disques',
@@ -12,11 +12,15 @@ export class ListDisquesComponent implements OnInit {
   title = 'Liste des disques';
   private disques: Disque[] = null;
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private disquesService:DisquesService ){}
 
   ngOnInit(): void {
+    this.getDisques();
+    //this.disques = DISQUES;
+  }
 
-    this.disques = DISQUES;
+  getDisques(): void {
+    this.disques = this.disquesService.getAllDisques();
   }
 
   selectDisque(d) {
