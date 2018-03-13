@@ -1,0 +1,40 @@
+<div *ngIf="disque" class="glyphicon-arrow-down">
+  <h2 class="glyphicon-header center">{{disque.name}}</h2>
+  <div class="card horizontal hoverable">
+    <div class="card-image">
+      <img [src]="disque.picture" alt="Alternate Text" />
+    </div>
+    <div class="card-stacked">
+        <div class="card-content">
+      <table class="bordered striped">
+        <tbody>
+          <tr>
+            <td>Nom</td>
+            <td>{{disque.name}}</td>
+          </tr>
+          <tr>
+            <td>Album</td>
+            <td>{{disque.title}}</td>
+          </tr>
+          <tr>
+            <td>Stock</td>
+            <td>{{disque.stock}}</td>
+          </tr>
+          <tr>
+            <td>Genre</td>
+            <td><span *ngFor="let categorie of disque.types" class=" {{categorie | disqueCategory}}" ></span></td>
+          </tr>
+          <tr>
+            <td>Date</td>
+            <td>{{disque.created | date:'dd/MM/yyyy'}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+    <div class="card-action">
+      <a href="#" (click)="goBack()">Retour</a>
+    </div>
+  </div>
+
+</div>
+<h4 *ngIf="!disque" class="glyphicon-align-center">Aucun disque à afficher</h4>
