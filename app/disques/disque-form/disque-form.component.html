@@ -1,56 +1,63 @@
-<form *ngIf="disque" #disqueForm="ngForm">
-
+<form *ngIf="disque" #disqueForm="ngForm" (ngSubmit)="onSubmit()">
+  <!-- referencer formulaire,  -->
   <div class="row">
     <div class="col s8 offset-s2">
       <div class="card-panel">
+
         <div class="form-group">
-          <label for="name">Nom de l'artiste</label>
-          <input type="text"
-                 id="name"
-                 class="form-control"
-                 name="name"
-                 #name1="ngModel"
-                 [(ngModel)]="disque.name"
-                 required
-                 pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\.\_\;\-\,\!\?\'\s]{1,100}$">
 
-          <div [hidden]="name1.valid || name1.pristine" class="card-panel red accent-1">Le nom est incorrect !</div>
+          <label for="name">Nom</label>
+          <input type="text" id="name" class="form-control" name="name" #name="ngModel" [(ngModel)]='disque.name' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
+        </div>
+        <div [hidden]="name.valid || name.pristine" class="card-panel red accent-1">
+          <!-- pristine = n'a jamais ete modifier -->
+          Le nom de l'artiste est recauis 100 cara max
+        </div>
 
-          <label for="title">Titre de l'album</label>
-          <input type="text"
-                 id="title"
-                 name="title"
-                 #title="ngModel"
-                 class="form-control"
-                 [(ngModel)]="disque.title"
-                 required>
-          <div [hidden]="title.valid || title.pristine" class="card-panel red accent-1">Le titre est incorrect !</div>
+
+        <div class="form-group">
+
+          <label for="title">Titre</label>
+          <input type="text" id="title" class="form-control" name="title" #title="ngModel" [(ngModel)]='disque.title' required>
+        </div>
+        <div [hidden]="title.valid || title.pristine" class="card-panel red accent-1">
+          <!-- pristine = n'a jamais ete modifier -->
+          Le titre de l'artiste est recauis 100 cara maxs
+        </div>
+
+        <div class="form-group">
 
           <label for="stock">Stock</label>
-          <input type="number"
-                 id="stock"
-                 name="stock"
-                 #stock="ngModel"
-                 class="form-control"
-                 [(ngModel)]="disque.stock"
-                 required
-                 step="1" min="0" max="100"
-                 pattern="^[0-9._\;\-\,\!\?\'\s]{1,3}$">
-          <div [hidden]="stock.valid || stock.pristine" class="card-panel red accent-1">Le titre est incorrect !</div>
+          <input type="number" id="stock" class="form-control" name="stock" #stock="ngModel" [(ngModel)]='disque.stock' required pattern="[0-9]{1,2}$"
+            min="0">
+        </div>
+        <div [hidden]="stock.valid || stock.pristine" class="card-panel red accent-1">
+          <!-- pristine = n'a jamais ete modifier -->
+          Le stock de l'artiste est recauis
+        </div>
+
+
+        <div class="form-group">
+          <label>Categories:</label>
+          <div *ngFor="let ctg of categories; let i = index;" class="row">
+            <input type="checkbox" class="filled-in" id="cat{{ i }}" name="cat{{ i }}" [value]="ctg" [checked]="hasCategory(ctg)" (change)="selectCat($event, ctg)" [disabled]="isCatValid(ctg)"/>
+
+            <label for="cat{{ i }}">
+              <span class="{{ ctg | disqueCategory }}">{{ ctg }}</span>
+            </label>
+
+          </div>
         </div>
         <div class="divider"></div>
         <div class="section center">
-          <button [disabled]="!disqueForm.valid" type="submit" class="btn waves-effect waves-light purple darken-4">Enregistrer</button>
+          <button [disabled]="!disqueForm.valid" type="submit" class="btn waves-effect waves-light purple darken-4">Valider</button>
         </div>
 
       </div>
 
-
     </div>
+
   </div>
 
-
-
-
 </form>
-<h3 class="center" *ngIf="!disque">Aucun disque à éditer</h3>
+<h3 class="center" *ngIf="!disque">Aucun disque </h3>

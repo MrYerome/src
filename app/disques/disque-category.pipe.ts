@@ -5,35 +5,48 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DisqueCategoryPipe implements PipeTransform {
 
-  transform(cat: string): string {
+  transform(cat:string): string {
     let color: string;
-    switch (cat) {
-      case 'Français':
-        color = "blue lighten-1";
-        break;
+    switch(cat){
+      
+      case 'Francais':
+      color = 'blue ligthen-1';
+      break;
+      
       case 'Disco':
-        color = "green lighten-1";
-        break;
+      color = 'green ligthen-1';
+      break;
+      
       case 'Etranger':
-        color = "brown lighten-1";
-        break;
+      color = 'brown ligthen-1';
+      break;
+     
       case 'Funk':
-        color = "blue lighten-3";
-        break;
+      color = 'blue ligthen-3';
+      break;
+     
       case 'Soul':
-        color = "deep-purple accent-1";
-        break;
+      color = 'deep=purple accent-1';
+      break;
+      
       case 'Autre':
-        color = "pink lighten-4";
-        break;
+      color = 'pink ligthen-4';
+      break;
+     
       case 'Jazz':
-        color = "deep-purple darken-2";
-        break;
-      case 'Variétés':
-        color = "lime accent-1";
-        break;
+      color = 'deep-purple draken-2';
+      break;
+      
+      case 'Variete':
+      color = 'lime accent-1';
+      break;
+      
+      default:
+      color = 'grey';
+      break
+      
     }
-    return 'chip '+color;
+    return 'chip ' + color;
   }
 
 }

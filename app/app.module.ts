@@ -4,6 +4,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DisquesModule } from './disques/disques.module';
+import { HttpClientModule} from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 
 @NgModule({
@@ -14,7 +17,9 @@ import { DisquesModule } from './disques/disques.module';
   imports: [
     BrowserModule,
     DisquesModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService,  { dataEncapsulation : false })
   ],
   providers: [],
   bootstrap: [AppComponent]

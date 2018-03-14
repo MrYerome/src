@@ -1,23 +1,28 @@
 <h1 class="center">Disques</h1>
 <div class="container">
-  <div class="row">
-    <div *ngFor="let Disque of disques" class="col s6 m4" (click)="selectDisque(Disque)" appBordure="yellow">
+
+  <div class='row'>
+    <div *ngFor="let disque of disques" class="col s6 m4" (click)="selectDisque(disque)" appBordure="yellow"> 
+      <!-- boucle for -->
       <div class="card horizontal">
         <div class="card-image">
-          <img [src]="Disque.picture" alt="Photo de l'album" />
+          <img [src]="disque.picture"> 
+          <!-- interpolation => va checher la valeur de l'image correspondante [...]-->
+
         </div>
-        <div class="card-stacked">
+        <div class="card=stacked">
           <div class="card-content">
-            <p>{{Disque.name|uppercase}}</p>
-            <p> {{Disque.title | upperca}}</p>
-            <p>{{Disque.created | date : "dd/MM/yyyy"}}</p>
-            <p><span *ngFor="let categorie of Disque.types" class="{{categorie | disqueCategory}}"> {{categorie}}</span></p>
+            <p>{{ disque.name}}</p>
+            <p>{{ disque.title | majTitre}}</p>
+            <!-- pipe name "majTitre" -->
+            <p>{{ disque.created | date:"dd/MM/yyyy"}}</p>
+            <!-- pipes -> ameliore l'affichage, plusiers possible -->
+            <p><span *ngFor="let categorie of disque.cat"  class=" {{ categorie | disqueCategory }} "> {{ categorie }} </span></p>
+
           </div>
         </div>
       </div>
+
     </div>
   </div>
-
-
 </div>
-

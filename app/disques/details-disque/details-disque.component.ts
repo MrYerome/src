@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-//import { DISQUES } from './../disques-data';
+import { Disque } from '../disque';
+import { DISQUES } from '../disques-data';
 import { DisquesService } from '../disques.service';
-import { Disque } from './../Disque';
+
 
 @Component({
   selector: 'app-details-disque',
@@ -10,37 +11,37 @@ import { Disque } from './../Disque';
   styleUrls: ['./details-disque.component.css']
 })
 export class DetailsDisqueComponent implements OnInit {
-  disques: Disque[] = null;
-  disque: Disque = null;
+  // disques: Disque[]=null;
+  disque :Disque = null;
 
-  constructor(private route:ActivatedRoute, private router : Router, private disquesService : DisquesService) { }
+  constructor (private route: ActivatedRoute, private router:Router, private disquesService: DisquesService) { }
+  // injecter des dependances de services
 
-  ngOnInit(): void {
-    /*this.disques = DISQUES;
-    let id = +this.route.snapshot.paramMap.get('id');
-    for (let i = 0; i < this.disques.length; i++) {
-      if (this.disques[i].id == id) {
-        this.disque = this.disques[i];
-      } 
-    }*/
+  
+  ngOnInit() :void{
     this.recupDisque();
+    
+  //   this.disques = DISQUES;
+  //   let id = +this.route.snapshot.paramMap.get('id');
+  //   for(let i=0 ; i<this.disques.length ; i++){
+  //     if (this.disques[i].id == id){
+  //       this.disque = this.disques[i];
+  //     }
+  //   }
+  }
+  recupDisque(){
+  let id=+this.route.snapshot.paramMap.get('id');
+    // this.disque=this.disquesService.getDisque(id);
+    this.disquesService.getDisque(id).subscribe(data => this.disque=data);
+  }
+  editDisque(d){
+    this.router.navigate(['/disque/edit',d.id]);
+
   }
 
-  recupDisque() {
-    let id = +this.route.snapshot.paramMap.get('id');
-    console.log(id);
-    this.disque = this.disquesService.getDisque(id);
-  }
 
-  editDisque(d) {
-    let id = +this.route.snapshot.paramMap.get('id');
-    this.router.navigate(['/disque/edit', d.id]);
-    console.log(id);
+  goBack():void{
+    this.router.navigate(['/disque/all']);
   }
-
-goBack(): void {
-  this.router.navigate(['/disques']);
-  }
-
 
 }

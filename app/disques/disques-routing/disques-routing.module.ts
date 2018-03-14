@@ -5,20 +5,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditDisqueComponent } from '../edit-disque/edit-disque.component';
 
 
-const disquesRoutes = [
-  {
-    path: 'disque', children: [
-      { path: 'all', component: ListDisquesComponent },
-      { path: ':id', component: DetailsDisqueComponent },
-      { path: 'edit/:id', component: EditDisqueComponent }
-    ]
-  }
+const disquesRoutes=[
+  {path : 'disque', children :[
+    {path : 'all' , component : ListDisquesComponent},
+    {path : 'edit/:id', component : EditDisqueComponent},
+    {path : ':id', component : DetailsDisqueComponent}
+  ]}
 ];
-
 @NgModule({
   imports: [
     RouterModule.forChild(disquesRoutes)
+
   ],
-  exports: []
+  exports: [ RouterModule ]
+  // export -> renvoyer
 })
 export class DisquesRoutingModule { }

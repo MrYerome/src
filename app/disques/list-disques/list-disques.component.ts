@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Disque } from './../Disque';
+import { DISQUES } from './../disques-data';
+import { Disque } from './../disque';
 import { Router } from '@angular/router';
 import { DisquesService } from '../disques.service';
+
 
 @Component({
   selector: 'app-list-disques',
@@ -9,21 +11,24 @@ import { DisquesService } from '../disques.service';
   styleUrls: ['./list-disques.component.css']
 })
 export class ListDisquesComponent implements OnInit {
-  title = 'Liste des disques';
-  private disques: Disque[] = null;
+  private disques:Disque[] =null;
 
-  constructor(private router: Router, private disquesService:DisquesService ){}
+  constructor(private router: Router, private disquesService: DisquesService) { }
 
-  ngOnInit(): void {
-    this.getDisques();
-    //this.disques = DISQUES;
+  
+
+  ngOnInit() {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.disques=DISQUES;
+  }
+  getDisques(){
+    // this.disques=this.disquesService.getAllDisques()
+    this.disquesService.getAllDisques().subscribe(data => this.disques = data);
+
   }
 
-  getDisques(): void {
-    this.disques = this.disquesService.getAllDisques();
-  }
-
-  selectDisque(d) {
+  selectDisque(d){
     console.log(d.title);
     this.router.navigate(['/disque',d.id]);
   }
