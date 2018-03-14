@@ -40,6 +40,7 @@
         <div class="card-action">
           <a (click)="goBack()" class="waves-effect purple darken-4 btn">retour</a>
           <a (click)="editDisque(disque)" class="waves-effect purple darken-4 btn">Editer</a>
+          <a (click)="deleteDisque(disque)" class="waves-effect red darken-4 btn">Supprimer</a>
         </div>
       </div>
     </div>
@@ -51,4 +52,4 @@
 
 </div>
 
-<h4 *ngIf="!disque" class="center">Aucun disque a afficher</h4>
+<h4 *ngIf="!disque" class="center"><app-loader></app-loader></h4>

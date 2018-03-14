@@ -65,7 +65,9 @@ export class DisqueFormComponent implements OnInit {
 
   onSubmit(){
     console.log('form envoye');
-    this.goBack();
+    this.disqueService
+      .updateDisque(this.disque)
+      .subscribe(()=>this.goBack());
   }
 
   goBack():void{

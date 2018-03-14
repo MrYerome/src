@@ -1,14 +1,13 @@
 <h1 class="center">Disques</h1>
 <div class="container">
-
+  <app-search-disque></app-search-disque>
   <div class='row'>
-    <div *ngFor="let disque of disques" class="col s6 m4" (click)="selectDisque(disque)" appBordure="yellow"> 
+    <div *ngFor="let disque of disques" class="col s6 m4" (click)="selectDisque(disque)" (mouseenter)="affichDisque(disque)" appBordure="yellow">
       <!-- boucle for -->
       <div class="card horizontal">
         <div class="card-image">
-          <img [src]="disque.picture"> 
+          <img [src]="disque.picture">
           <!-- interpolation => va checher la valeur de l'image correspondante [...]-->
-
         </div>
         <div class="card=stacked">
           <div class="card-content">
@@ -17,12 +16,10 @@
             <!-- pipe name "majTitre" -->
             <p>{{ disque.created | date:"dd/MM/yyyy"}}</p>
             <!-- pipes -> ameliore l'affichage, plusiers possible -->
-            <p><span *ngFor="let categorie of disque.cat"  class=" {{ categorie | disqueCategory }} "> {{ categorie }} </span></p>
-
+            <p><span *ngFor="let categorie of disque.cat" class=" {{ categorie | disqueCategory }} "> {{ categorie }} </span></p>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

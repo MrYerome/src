@@ -38,6 +38,13 @@ export class DetailsDisqueComponent implements OnInit {
     this.router.navigate(['/disque/edit',d.id]);
 
   }
+  deleteDisque(d) {
+    if (confirm('supprimer ce disque ?')) {
+      this.disquesService.deleteDisque(d).subscribe(() => this.goBack());
+    }
+    
+    //
+  }
 
 
   goBack():void{

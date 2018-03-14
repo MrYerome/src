@@ -10,6 +10,8 @@ import { DisquesRoutingModule } from './disques-routing/disques-routing.module';
 import { DisquesService } from './disques.service';
 import { EditDisqueComponent } from './edit-disque/edit-disque.component';
 import { DisqueFormComponent } from './disque-form/disque-form.component';
+import { SearchDisqueComponent } from './search-disque/search-disque.component';
+import { LoaderComponent } from '../loader/loader.component';
 
 @NgModule({
   imports: [
@@ -25,7 +27,9 @@ import { DisqueFormComponent } from './disque-form/disque-form.component';
     MajTitrePipe,
     DisqueCategoryPipe,
     EditDisqueComponent,
-    DisqueFormComponent
+    DisqueFormComponent,
+    SearchDisqueComponent,
+    LoaderComponent
   ], providers :[
     DisquesService
   ]

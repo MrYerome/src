@@ -33,4 +33,9 @@ export class ListDisquesComponent implements OnInit {
     this.router.navigate(['/disque',d.id]);
   }
 
+  affichDisque(d) {
+    console.log(d.title);
+
+  }
+
 }
