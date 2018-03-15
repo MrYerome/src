@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col s12 m4 offset-m4">
+    <div class="card hoverable">
+      <div class="card-content center">
+        <span class="card-title">Page de connexion</span>
+        <p><em>{{message}}</em></p>
+        <form #loginform="ngForm" (keyup.enter)="login()">
+          <div>
+            <label for="name">Identifiant :</label>
+            <input type="text"
+                   id="name"
+                   name="name"
+                   placeholder="Votre login"
+                   [(ngModel)]="name"
+                   class="champ"
+                   required>
+          </div>
+          <div>
+            <label for="pw">Mot de passe :</label>
+            <input type="text"
+                   id="pw"
+                   name="pw"
+                   placeholder="Votre mot de passe"
+                   [(ngModel)]="pw"
+                   class="champ"
+                   required>
+          </div>
+
+        </form>
+        <div class="card-action center">
+          <a class="waves-effect purple darken-4 btn"
+             (click)="login()"
+             *ngIf="!authService.isLog">
+          Se connecter</a>
+          <a class="waves-effect red darken-4 btn"
+             (click)="logout()"
+             *ngIf="authService.isLog">Se déconnecter</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

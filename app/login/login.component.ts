@@ -1,20 +1,18 @@
-import { Component } from '@angular/core';
-import { AuthService } from './auth.service';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
-
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class AppComponent {
-
+export class LoginComponent  {
   message: string = "Vous êtes déconnecté";
   name: string;
   pw: string;
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthService, private router : Router ) { }
 
   setMessage() {
     this.message = this.authService.isLog ?
@@ -38,6 +36,8 @@ export class AppComponent {
 
   logout() {
     this.authService.logout();
-    this.setMessage;
-    this.router.navigate(['login']);
-  }}
+      this.setMessage;
+    }
+  }
+
+

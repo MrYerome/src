@@ -1,11 +1,15 @@
 <nav>
-    <div class="nav-wrapper purple darken-4">
-        <a routerLink='/disque/all' class="brand-logo center">Ma Discoteque</a>
-    </div>
+  <div class="nav-wrapper purple darken-4">
+    <a routerLink='/disque/all' class="brand-logo center">Ma Discoteque</a>
+  </div>
 
 </nav>
 <!-- en dehors de router-outler pour afficher sur les pages, en commun sur les pages -->
 <router-outlet>
-    <!-- composant injecte charges sur les plages -->
+  <!-- composant injecte charges sur les plages -->
 
 </router-outlet>
+
+<div><a class="right-align waves-effect red darken-4 btn"
+   (click)="logout()"
+   *ngIf="authService.isLog">Se déconnecter</a></div>

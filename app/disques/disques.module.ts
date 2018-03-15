@@ -12,6 +12,7 @@ import { EditDisqueComponent } from './edit-disque/edit-disque.component';
 import { DisqueFormComponent } from './disque-form/disque-form.component';
 import { SearchDisqueComponent } from './search-disque/search-disque.component';
 import { LoaderComponent } from '../loader/loader.component';
+import { AuthGuard } from '../auth.guard';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { LoaderComponent } from '../loader/loader.component';
     SearchDisqueComponent,
     LoaderComponent
   ], providers :[
-    DisquesService
+    DisquesService,
+    AuthGuard
   ]
 })
 export class DisquesModule { }

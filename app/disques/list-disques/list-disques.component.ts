@@ -11,7 +11,7 @@ import { DisquesService } from '../disques.service';
   styleUrls: ['./list-disques.component.css']
 })
 export class ListDisquesComponent implements OnInit {
-  private disques:Disque[] =null;
+  public disques:Disque[] =null;
 
   constructor(private router: Router, private disquesService: DisquesService) { }
 
