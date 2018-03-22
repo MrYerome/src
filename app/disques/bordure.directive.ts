@@ -5,7 +5,7 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 })
 export class BordureDirective {
   private initialColor:string='#f5f5f5';
-  private hoverColor:string='#4A148C';
+  private hoverColor:string='#4A148C'; 
 
   constructor( private el:ElementRef) { 
     
